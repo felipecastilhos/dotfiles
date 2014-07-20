@@ -280,6 +280,15 @@
         </finalactions>
       </action>
     </keybind>
+    <keybind key="A-F2">
+      <action name="Execute">
+        <startupnotify>
+	  <enabled>true</enabled>
+	  <name>Run Program</name>
+	</startupnotify>
+        <command>gmrun</command>
+      </action>
+    </keybind>
     <keybind key="C-A-Tab">
       <action name="NextWindow">
         <panels>yes</panels>

@@ -6,3 +6,6 @@ tint2 &
 #set wallpaper 
 nitrogen --restore &
 
+#configure monitores
+xrandr  --output DVI-I-3 --auto --output DVI-I-2 --auto --left-of DVI-I-3
+
