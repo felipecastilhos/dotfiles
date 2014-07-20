@@ -1,0 +1,8 @@
+#programs tht will run after Openbox has started
+
+#run tint2
+tint2 &
+
+#set wallpaper 
+nitrogen --restore &
+
