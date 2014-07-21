@@ -283,9 +283,9 @@
     <keybind key="A-F2">
       <action name="Execute">
         <startupnotify>
-	  <enabled>true</enabled>
-	  <name>Run Program</name>
-	</startupnotify>
+          <enabled>true</enabled>
+          <name>Run Program</name>
+        </startupnotify>
         <command>gmrun</command>
       </action>
     </keybind>

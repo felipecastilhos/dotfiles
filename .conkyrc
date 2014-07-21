@@ -62,9 +62,9 @@ ${goto 20}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "h
 ${goto 20}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°${goto 90}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2'}°${goto 160}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3'}°${goto 230}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==4'}°${goto 300}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==5'}°
 ${color7}${hr}${color}
 ${if_existing /proc/net/route wlp2s7}
-${color1}Up:${color} ${color3}${upspeed wlp2s7}${color}${alignr}${color1}Down:${color} ${color3}${downspeed wlan0}${color}
-${upspeedgraph wlp2s7 75,135 FF8800 FF8800}${alignr}${downspeedgraph wlan0 75,135 FF8800 FF8800}
-${color1}Sent:${color} ${color2}${totalup wlp2s7}${color}${alignr}${color1}Received:${color} ${color2}${totaldown wlan0}${color}
+${color1}Up:${color} ${color3}${upspeed wlp2s7}${color}${alignr}${color1}Down:${color} ${color3}${downspeed wlp2s7}${color}
+${upspeedgraph wlp2s7 75,135 FF8800 FF8800}${alignr}${downspeedgraph wlp2s7 75,135 FF8800 FF8800}
+${color1}Sent:${color} ${color2}${totalup wlp2s7}${color}${alignr}${color1}Received:${color} ${color2}${totaldown wlp2s7}${color}
 ${else}${if_existing /proc/net/route wlan1}
 ${color1}Up:${color} ${color3}${upspeed wlan1}${color}${alignr}${color1}Down:${color} ${color3}${downspeed wlan1}${color}
 ${upspeedgraph wlan1 75,135 FF8800 FF8800}${alignr}${downspeedgraph wlan1 75,135 FF8800 FF8800}

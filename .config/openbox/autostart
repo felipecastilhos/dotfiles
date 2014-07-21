@@ -8,4 +8,9 @@ nitrogen --restore &
 
 #configure monitores
 xrandr  --output DVI-I-3 --auto --output DVI-I-2 --auto --left-of DVI-I-3
+#start conky
+conky &
+conky -c ~/.conky/.conkyrc_top_pannel & 
 
+gnome-screensaver &
+gnome-power-manager &
