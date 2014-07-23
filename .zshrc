@@ -9,7 +9,6 @@ colors
 ##%{$fg[white]%} »  %{$reset_color%}"
 PROMPT="
 %{$fg[red]%} >  %{$reset_color%}"
-RPROMPT="%B%{$fg[black]%}%~%{$reset_color%}"
 
 [[ -t 1 ]] || return
 case $TERM in
@@ -45,3 +44,28 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
+git_prompt() {
+ ref=$(git symbolic-ref HEAD | cut -d'/' -f3)
+ echo $ref
+}
+
+
+setopt prompt_subst
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' actionformats \
+    '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:*' formats       \
+    '%F{4}[%F{6}%b%F{4}]%f '
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+
+zstyle ':vcs_info:*' enable git cvs svn
+
+vcs_info_wrapper() {
+  vcs_info
+  if [ -n "$vcs_info_msg_0_" ]; then
+    echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+  fi
+}
+
+RPROMPT="%B%{$fg[black]%}%~%{$reset_color%}  $(vcs_info_wrapper)"
