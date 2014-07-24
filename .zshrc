@@ -45,12 +45,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-git_prompt() {
- ref=$(git symbolic-ref HEAD | cut -d'/' -f3)
- echo $ref
-}
-
-
 setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' actionformats \
@@ -61,6 +55,8 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 
 zstyle ':vcs_info:*' enable git cvs svn
 
+
+
 vcs_info_wrapper() {
   vcs_info
   if [ -n "$vcs_info_msg_0_" ]; then
@@ -68,4 +64,8 @@ vcs_info_wrapper() {
   fi
 }
 
-RPROMPT="%B%{$fg[black]%}%~%{$reset_color%}  $(vcs_info_wrapper)"
+
+	
+precmd() { 
+	RPROMPT="%B%{$fg[black]%}%~%{$reset_color%}  $(vcs_info_wrapper)"
+}
