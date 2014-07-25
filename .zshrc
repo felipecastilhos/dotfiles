@@ -45,6 +45,19 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+#monitor aliases
+alias mm='xrandr --output HDMI-0 --off; xrandr --output DVI-I-2 --auto --output DVI-I-3 --auto --right-of DVI-I-2'      
+alias mt='xrandr --output DVI-I-3 --off; xrandr --output HDMI-0 --auto --output DVI-I-2 --auto --below HDMI-0'
+
+#git aliases
+alias gst='git status'
+alias glog='git log'
+alias gush='git push'
+alias gull='git gull'
+alias gadda='git add .'
+alias gmmit='git commit -m'
+
+
 setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' actionformats \
