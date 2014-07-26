@@ -51,11 +51,33 @@ alias mt='xrandr --output DVI-I-3 --off; xrandr --output HDMI-0 --auto --output 
 
 #git aliases
 alias gst='git status'
+compdef _git gst=git-status
+
 alias glog='git log'
+alias gd='gitd diff'
 alias gush='git push'
-alias gull='git gull'
+alias gull='git pull'
+alias ga='git add'
 alias gadda='git add .'
-alias gmmit='git commit -m'
+alias gcmsg='git commit -m'
+alias gco='git checkout'
+alias gcm='git checkout master'
+alias gcd='git checkout develop'
+alias gba='git branch -a'
+alias gcp='git cherry-pick'
+alias glgga='git log --graph --decorate --all'
+alias glo='git log --oneline --decorate --color'
+alias glog='git log --oneline --decorate --color --graph'
+
+
+alias gsta='git stash'
+alias gstp='git stash pop'
+alias gstd='git stash drop'
+
+
+
+
+
 
 
 setopt prompt_subst
