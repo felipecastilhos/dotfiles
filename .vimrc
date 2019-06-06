@@ -6,6 +6,7 @@ set mouse=a
 
 "Search Options
 set hlsearch
+set incsearch
 
 "Syntax Highlight
 filetype plugin on
