@@ -41,6 +41,17 @@ stow wezterm
 
 3. Restart your terminal or source your shell configuration.
 
+## Scripts
+
+The `scripts/` folder contains utility scripts for managing your dotfiles (note: this folder itself is not a dotfile backup, just utility tools). These scripts are usually aliased in the .zshrc configuration for convenience.
+
+For detailed information about available scripts and their usage, see [scripts/README.md](scripts/README.md).
+
+**Quick overview:**
+- `dotbkper.sh` - Move config files to dotfiles repo and stow them back
+- `dotsync.sh` - Sync dotfiles changes to Git repository  
+- `dotstatus.sh` - Check for uncommitted dotfiles changes
+
 ## What is this?
 
 This repository contains my personal dotfiles organized for use with GNU Stow. Each directory represents a different program's configuration that gets symlinked to the appropriate location in your home directory when you run `stow`.

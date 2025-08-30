@@ -18,7 +18,7 @@ backup_path() {
     local path="$1"
     
     if [[ ! -e "$path" ]]; then
-        echo "Warning: '$path' does not exist, skipping..."
+        echo "⚠️  Warning: '$path' does not exist, skipping..."
         return 1
     fi
     
@@ -31,8 +31,7 @@ backup_path() {
     # Create target path maintaining directory structure
     local target_path="$dotfiles_dir/$package/$relative_path"
     
-    echo "Moving $path to package: $package"
-    echo "Target: $target_path"
+    echo "📦 Moving $path to package: $package"
     
     if [[ -d "$path" ]]; then
         # Handle directory
@@ -52,5 +51,5 @@ for path in "$@"; do
 done
 
 # Stow the package once at the end
-echo "Stowing package: $package"
+echo "🔗 Stowing package: $package"
 stow -d "$dotfiles_dir" -t "$HOME" "$package"
