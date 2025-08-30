@@ -1,0 +1,12 @@
+[Unit]
+Description=Sync dotfiles to Git repository
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/dotfiles/scripts/dotsync.sh
+WorkingDirectory=%h/dotfiles/scripts
+
+[Install]
+WantedBy=default.target
