@@ -162,7 +162,10 @@ alias mongodb="/usr/bin/mongod"
 alias cd="z"
 alias vim="nvim"
 alias cat="bat -pp"
+
+# dotfiles utilities
 alias dotbkper="~/scripts/tools/dotfiles/dotbkper.sh"
+alias dotsync="~/scripts/tools/dotfiles/dotsync.sh"
 
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 eval "$(zoxide init zsh)"
