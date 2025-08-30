@@ -167,6 +167,7 @@ alias cat="bat -pp"
 alias dotbkper="~/dotfiles/scripts/dotbkper.sh"
 alias dotsync="~/dotfiles/scripts/dotsync.sh"
 alias dotstatus="~/dotfiles/scripts/dotstatus.sh"
+alias dotlink="~/dotfiles/scripts/dotlink.sh"
 
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 eval "$(zoxide init zsh)"

@@ -4,6 +4,20 @@ This directory contains utility scripts to manage your dotfiles configuration us
 
 ## Scripts Overview
 
+### `dotlink.sh` - Dotfiles Linker
+
+Links all dotfile packages using GNU Stow with conflict detection.
+
+**Usage:**
+```bash
+./dotlink.sh
+```
+
+**What it does:**
+1. Automatically stows all directories (except `scripts/`) in the dotfiles repository
+2. Shows success/conflict status for each package
+3. Skips packages that would cause conflicts (use `stow --force` manually if needed)
+
 ### `dotbkper.sh` - Dotfiles Backup & Package
 
 Moves configuration files/directories from your system to the dotfiles repository and automatically stows them back using GNU Stow.
