@@ -164,8 +164,9 @@ alias vim="nvim"
 alias cat="bat -pp"
 
 # dotfiles utilities
-alias dotbkper="~/scripts/tools/dotfiles/dotbkper.sh"
-alias dotsync="~/scripts/tools/dotfiles/dotsync.sh"
+alias dotbkper="~/dotfiles/scripts/dotbkper.sh"
+alias dotsync="~/dotfiles/scripts/dotsync.sh"
+alias dotstatus="~/dotfiles/scripts/dotstatus.sh"
 
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 eval "$(zoxide init zsh)"
@@ -174,13 +175,3 @@ mkcd() {
   mkdir -p "$1" && cd "$1"
 }
 
-dotstatus() {
-    cd ~/dotfiles
-    if [[ -n $(git status --porcelain) ]]; then
-        echo "🔶 Dotfiles have uncommitted changes"
-        git status --short
-    else
-        echo "✅ Dotfiles are up to date"
-    fi
-    cd - > /dev/null
-}
