@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -116,8 +116,11 @@ export MINICONDA="$HOME/miniconda3/bin"
 
 # Set up Node stuff
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+if [[ -z "$NVM_LOADED" ]]; then
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    export NVM_LOADED=1
+fi
 
 # Set up Java stuff
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
@@ -127,10 +130,16 @@ export QT_QPA_PLATFORM="wayland"
 # Fix conda init
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 
-# Add paths to PATH if they exist
-[ -d "$ANDROID_STUDIO" ] && PATH="$PATH:$ANDROID_STUDIO"
-[ -d "$MINICONDA" ] && PATH="$PATH:$MINICONDA"
-[ -x "$GODOT4" ] && PATH="$PATH:$GODOT4"
+# Add paths to PATH if they exist and not already present
+add_to_path() {
+    if [[ -d "$1" && ":$PATH:" != *":$1:"* ]]; then
+        PATH="$PATH:$1"
+    fi
+}
+
+add_to_path "$ANDROID_STUDIO"
+add_to_path "$MINICONDA"
+[[ -x "$GODOT4" && ":$PATH:" != *":$GODOT4:"* ]] && PATH="$PATH:$GODOT4"
 
 # Export the updated PATH
 export PATH
@@ -169,7 +178,11 @@ alias dotsync="~/dotfiles/scripts/dotsync.sh"
 alias dotstatus="~/dotfiles/scripts/dotstatus.sh"
 alias dotlink="~/dotfiles/scripts/dotlink.sh"
 
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+# Load conda only once
+if [[ -z "$CONDA_LOADED" && -f /opt/miniconda3/etc/profile.d/conda.sh ]]; then
+    source /opt/miniconda3/etc/profile.d/conda.sh
+    export CONDA_LOADED=1
+fi
 eval "$(zoxide init zsh)"
 
 mkcd() {
