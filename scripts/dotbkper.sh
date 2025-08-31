@@ -24,7 +24,7 @@ backup_path() {
     
     # Calculate relative path from HOME
     local relative_path="${path#$HOME/}"
-    
+
     # Remove trailing slash for consistency
     relative_path="${relative_path%/}"
     
@@ -34,14 +34,13 @@ backup_path() {
     echo "📦 Moving $path to package: $package"
     
     if [[ -d "$path" ]]; then
-        # Handle directory
-        mkdir -p "$(dirname "$target_path")"
-        cp -r "$path" "$(dirname "$target_path")/"
-        rm -rf "$path"
+        /usr/bin/mkdir -p "$(/usr/bin/dirname "$target_path")"
+        /usr/bin/cp -r "$path" "$(/usr/bin/dirname "$target_path")/"
+        /usr/bin/rm -rf "$path"
     else
-        # Handle file
-        mkdir -p "$(dirname "$target_path")"
-        mv "$path" "$target_path"
+        echo "This path --- $path"
+        /usr/bin/mkdir -p "$(/usr/bin/dirname "$target_path")"
+        /usr/bin/mv "$path" "$target_path"
     fi
 }
 
@@ -50,6 +49,7 @@ for path in "$@"; do
     backup_path "$path"
 done
 
+/usr/bin/mkdir --help
 # Stow the package once at the end
 echo "🔗 Stowing package: $package"
-stow -d "$dotfiles_dir" -t "$HOME" "$package"
+/usr/bin/stow -d "$dotfiles_dir" -t "$HOME" "$package"
