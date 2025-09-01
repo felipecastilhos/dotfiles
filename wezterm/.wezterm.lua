@@ -10,14 +10,14 @@ return {
     keys = {
         {
             key = "v", 
-            mods = "CTRL|ALT", 
+            mods = "CTRL|ALT|SHIFT", 
             action = wezterm.action.SplitVertical {
                 domain="CurrentPaneDomain"
             }
         },
         {
             key= "w", 
-            mods= "CMD", 
+            mods= "CTRL|ALT", 
             action=wezterm.action.CloseCurrentPane {
                 confirm=true
             }
