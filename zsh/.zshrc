@@ -3,34 +3,28 @@ export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CONFIG_DIR="$HOME/.config/zsh"
 ZSH_THEME="ys"
 
-ENABLE_CORRECTION="true"
-
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 source "$ZSH_CONFIG_DIR/aliases.lua"
 source "$ZSH_CONFIG_DIR/functions.lua"
 
+# Load tool configurations
+for tool_config in "$ZSH_CONFIG_DIR"/tools/*.zsh; do
+  [[ -r "$tool_config" ]] && source "$tool_config"
+done
+
 # Define  development enviroment
 export GODOT4="/usr/local/bin/godot"
 export ANDROID_STUDIO="$HOME/Library/android-studio/bin"
 export MINICONDA="$HOME/miniconda3/bin"
 
-# Set up Node stuff
-export NVM_DIR="$HOME/.nvm"
-if [[ -z "$NVM_LOADED" ]]; then
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    export NVM_LOADED=1
-fi
 
 # Set up Java stuff
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 
 # Fix Flameshot compatibility with Wayland
 export QT_QPA_PLATFORM="wayland"
-# Fix conda init
-export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 
 # Add paths to PATH if they exist and not already present
 add_to_path() {
@@ -56,11 +50,6 @@ setopt HIST_IGNORE_DUPS
 setopt extendedglob nomatch
 bindkey -e
 eval "$(zoxide init zsh)"
-# Load conda only once
-if [[ -z "$CONDA_LOADED" && -f /opt/miniconda3/etc/profile.d/conda.sh ]]; then
-    source /opt/miniconda3/etc/profile.d/conda.sh
-    export CONDA_LOADED=1
-fi
 
 
 # The following lines were added by compinstall
