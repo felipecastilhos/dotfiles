@@ -5,11 +5,6 @@ ZSH_THEME="ys"
 
 ENABLE_CORRECTION="true"
 
-# We ihich plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
@@ -53,8 +48,9 @@ export PATH
 
 #################### HISTORY #################### 
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_DUPS 
 #################################################
 
 setopt extendedglob nomatch
