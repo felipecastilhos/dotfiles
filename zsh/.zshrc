@@ -13,7 +13,8 @@ ENABLE_CORRECTION="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source $ZSH_CONFIG_DIR/aliases.lua
+source "$ZSH_CONFIG_DIR/aliases.lua"
+source "$ZSH_CONFIG_DIR/functions.lua"
 
 # Define  development enviroment
 export GODOT4="/usr/local/bin/godot"
@@ -65,14 +66,7 @@ if [[ -z "$CONDA_LOADED" && -f /opt/miniconda3/etc/profile.d/conda.sh ]]; then
     export CONDA_LOADED=1
 fi
 
-mkcd() {
-  mkdir -p "$1" && cd "$1"
-}
 
-# Quick file backup
-bak() {
-  cp "$1"{,.bak}
-}
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/hotfixx/.zshrc'
 
