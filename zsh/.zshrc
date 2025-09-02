@@ -6,8 +6,8 @@ ZSH_THEME="ys"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source "$ZSH_CONFIG_DIR/aliases.lua"
-source "$ZSH_CONFIG_DIR/functions.lua"
+source "$ZSH_CONFIG_DIR/aliases.zsh"
+source "$ZSH_CONFIG_DIR/functions.zsh"
 
 # Load tool configurations
 for tool_config in "$ZSH_CONFIG_DIR"/tools/*.zsh; do
