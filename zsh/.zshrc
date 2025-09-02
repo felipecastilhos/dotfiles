@@ -1,4 +1,3 @@
-# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CONFIG_DIR="$HOME/.config/zsh"
 ZSH_THEME="ys"
@@ -6,6 +5,8 @@ ZSH_THEME="ys"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+
+#Load my modules
 source "$ZSH_CONFIG_DIR/aliases.zsh"
 source "$ZSH_CONFIG_DIR/functions.zsh"
 source "$ZSH_CONFIG_DIR/core/history.zsh"
