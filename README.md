@@ -34,7 +34,7 @@ stow */
 
 # Or install specific configurations
 stow nvim
-stow zshrc
+stow zsh
 stow bashrc
 stow wezterm
 ```
@@ -51,6 +51,19 @@ For detailed information about available scripts and their usage, see [scripts/R
 - `dotbkper.sh` - Move config files to dotfiles repo and stow them back
 - `dotsync.sh` - Sync dotfiles changes to Git repository  
 - `dotstatus.sh` - Check for uncommitted dotfiles changes
+
+## Configuration Structure
+
+### ZSH
+Modular zsh configuration with lazy loading for better performance:
+- `core/` - Core shell settings (history, options, exports)
+- `tools/` - Lazy-loaded development tools (conda, nvm, zoxide)
+- Auto-discovery and loading of tool configurations
+
+### Features
+- Lazy loading for conda and nvm to improve shell startup time
+- Modular organization for easier maintenance
+- Automatic tool configuration discovery
 
 ## What is this?
 

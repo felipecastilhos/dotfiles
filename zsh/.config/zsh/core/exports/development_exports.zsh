@@ -5,7 +5,7 @@
 # Development tool paths
 export GODOT4="/usr/local/bin/godot"
 export ANDROID_STUDIO="$HOME/Library/android-studio/bin"
-export MINICONDA="$HOME/miniconda3/bin"
+export MINICONDA="/opt/miniconda3/bin"
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 
 # Add paths to PATH if they exist and not already present

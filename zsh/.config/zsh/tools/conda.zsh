@@ -22,3 +22,8 @@ python() {
   fi
   command python "$@"
 }
+
+jupyter() {
+  _load_conda
+  command /opt/miniconda3/bin/jupyter "$@"
+}
