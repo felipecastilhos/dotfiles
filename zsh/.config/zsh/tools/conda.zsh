@@ -1,4 +1,6 @@
-# Conda lazy loading
+# ============================================================================
+# CONDA - Python environment management (lazy loading)
+# ============================================================================
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 
 _load_conda() {

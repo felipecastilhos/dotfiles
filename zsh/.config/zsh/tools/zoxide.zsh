@@ -1,13 +1,4 @@
 # ============================================================================
-# FUNCTIONS - Custom shell functions
+# ZOXIDE - Smart directory jumping
 # ============================================================================
-
-# Creates a folder and opens it
-mkcd() {
-  mkdir -p "$1" && cd "$1"
-}
-
-# Quick file backup
-bak() {
-  cp "$1" "$1.bak"
-}
+eval "$(zoxide init zsh)"
