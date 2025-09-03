@@ -14,20 +14,17 @@ _load_nvm() {
 # Wrapper functions that trigger lazy loading
 nvm() {
     _load_nvm
-    nvm "$@"
+    command nvm "$@"
 }
 
 node() {
-    _load_nvm
-    node "$@"
+    command node "$@"
 }
 
 npm() {
-    _load_nvm
-    npm "$@"
+    command npm "$@"
 }
 
 npx() {
-    _load_nvm
-    npx "$@"
+    command npx "$@"
 }
