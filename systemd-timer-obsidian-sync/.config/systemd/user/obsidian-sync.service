@@ -1,0 +1,12 @@
+[Unit]
+Description=Sync Obsidian files to Git repository
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/scripts/tools/obsidian/obsidian-sync.sh
+WorkingDirectory=%h/scripts/tools
+
+[Install]
+WantedBy=default.target

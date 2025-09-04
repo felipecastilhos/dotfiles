@@ -1,0 +1,11 @@
+[Unit]
+Description=Sync Obsidian Files daily
+Requires=obsidian-sync.service
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target
