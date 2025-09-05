@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=%h/scripts/tools/obsidian/obsidian-sync.sh
+ExecStart=%h/scripts/tools/obsidian/obsidian-sync.zsh
 WorkingDirectory=%h/scripts/tools
 
 [Install]
