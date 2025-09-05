@@ -1,7 +1,7 @@
 # ============================================================================
 # NVM - Node.js version management (lazy loading)
 # ============================================================================
-export NVM_DIR="/usr/share/nvm"  
+export NVM_DIR="$HOME/.nvm"  
 
 _load_nvm() { 
     if [[ -z "$NVM_LOADED" ]]; then
