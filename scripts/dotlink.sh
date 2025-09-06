@@ -24,10 +24,6 @@ DESCRIPTION:
 EOF
 }
 
-ARM="batata"
-
-echo $ARM
-
 # Check for help flag
 case "$1" in
     -h|--help)
