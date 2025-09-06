@@ -60,11 +60,6 @@ Modular zsh configuration with lazy loading for better performance:
 - `tools/` - Lazy-loaded development tools (conda, nvm, zoxide)
 - Auto-discovery and loading of tool configurations
 
-### Features
-- Lazy loading for conda and nvm to improve shell startup time
-- Modular organization for easier maintenance
-- Automatic tool configuration discovery
-
 ## What is this?
 
 This repository contains my personal dotfiles organized for use with GNU Stow. Each directory represents a different program's configuration that gets symlinked to the appropriate location in your home directory when you run `stow`.
