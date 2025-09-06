@@ -77,36 +77,45 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
+    vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
     lazypath,
-  })
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- install plugins
 require("lazy").setup({
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  { "neovim/nvim-lspconfig" },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    { "neovim/nvim-lspconfig" },
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
 })
 
 -- configure Catppuccin
 require("catppuccin").setup({ flavour = "mocha" })
 vim.cmd.colorscheme "catppuccin"
 
+-- Configure Mason
+require("mason").setup()
+
+-- Configure mason-lspconfig
+require("mason-lspconfig").setup({
+    ensure_installed = { "bashls" },
+    automatic_installation = true,
+})
+
+-- LSP server configurations
+local lspconfig = require("lspconfig")
+
+-- Configure LSP servers after mason-lspconfig
+lspconfig.bashls.setup({
+    filetypes = { "sh", "bash", "zsh" },
+})
+
 -- remaps
 require("keymaps")
-
--- LSP setup for Neovim 0.11+
-vim.lsp.config.bashls = {
-  cmd = { 'bash-language-server', 'start' },
-  filetypes = { 'sh', 'bash', 'zsh' },
-  root_markers = { '.git' },
-}
-
-vim.lsp.enable('bashls')
-
