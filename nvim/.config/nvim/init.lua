@@ -91,6 +91,7 @@ vim.opt.rtp:prepend(lazypath)
 -- install plugins
 require("lazy").setup({
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "neovim/nvim-lspconfig" },
 })
 
 -- configure Catppuccin
@@ -99,4 +100,13 @@ vim.cmd.colorscheme "catppuccin"
 
 -- remaps
 require("keymaps")
+
+-- LSP setup for Neovim 0.11+
+vim.lsp.config.bashls = {
+  cmd = { 'bash-language-server', 'start' },
+  filetypes = { 'sh', 'bash', 'zsh' },
+  root_markers = { '.git' },
+}
+
+vim.lsp.enable('bashls')
 

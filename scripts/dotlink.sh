@@ -24,6 +24,10 @@ DESCRIPTION:
 EOF
 }
 
+ARM="batata"
+
+echo $ARM
+
 # Check for help flag
 case "$1" in
     -h|--help)
@@ -35,7 +39,6 @@ esac
 cd ~/dotfiles
 
 echo "🔗 Linking all packages..."
-
 
 for package in */; do
     package=${package%/}
