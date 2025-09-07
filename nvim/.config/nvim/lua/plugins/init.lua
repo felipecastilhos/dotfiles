@@ -17,6 +17,7 @@ require("lazy").setup({
     { "neovim/nvim-lspconfig" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
+    { "WhoIsSethDaniel/mason-tool-installer.nvim" },
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-buffer" },
@@ -30,13 +31,7 @@ require("lazy").setup({
 require("catppuccin").setup({ flavour = "mocha" })
 vim.cmd.colorscheme "catppuccin"
 
--- Configure Mason
-require("mason").setup()
 
--- Configure mason-lspconfig
-require("mason-lspconfig").setup({
-    ensure_installed = { "bashls" },
-    automatic_installation = true,
-})
+require("plugins.mason-config")
 
 require("plugins.cmp-config")
