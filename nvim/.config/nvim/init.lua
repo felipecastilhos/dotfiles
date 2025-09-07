@@ -1,3 +1,14 @@
+-- remaps
+require("keymaps")
+
+--plugins
+require("plugins.init")
+
+-- lsp
+require ("lsp")
+
+-- ## NVIM.OPTIONS
+
 -- Enable mouse
 vim.opt.mouse = "a"
 
@@ -75,120 +86,4 @@ vim.api.nvim_create_autocmd("InsertLeave", {
     end,
 })
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
 
--- install plugins
-require("lazy").setup({
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    { "neovim/nvim-lspconfig" },
-    { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
-    { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
-    { "L3MON4D3/LuaSnip" },
-    { "saadparwaiz1/cmp_luasnip" },
-})
-
--- configure Catppuccin
-require("catppuccin").setup({ flavour = "mocha" })
-vim.cmd.colorscheme "catppuccin"
-
--- Configure Mason
-require("mason").setup()
-
--- Configure mason-lspconfig
-require("mason-lspconfig").setup({
-    ensure_installed = { "bashls" },
-    automatic_installation = true,
-})
-
--- LSP server configurations
-local lspconfig = require("lspconfig")
-
--- Configure completion capabilities
-local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- Configure LSP servers after mason-lspconfig
-lspconfig.bashls.setup({
-    filetypes = { "sh", "bash", "zsh" },
-    capabilities = cmp_capabilities,
-})
-
--- Configure nvim-cmp
-local cmp = require('cmp')
-local luasnip = require('luasnip')
-
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end,
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            else
-                fallback()
-            end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end, { 'i', 's' }),
-    }),
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-    }, {
-        { name = 'buffer' },
-        { name = 'path' },
-    })
-})
-
--- Use buffer source for `/` and `?`
-cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
-})
-
--- Use cmdline & path source for `:`
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
-        { name = 'cmdline' }
-    })
-})
-
--- remaps
-require("keymaps")
