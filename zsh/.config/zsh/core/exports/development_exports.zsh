@@ -20,4 +20,6 @@ add_to_path "$ANDROID_STUDIO"
 add_to_path "$MINICONDA"
 add_to_path "$GODOT4"
 
+# Add the npm command to the shell
+eval "$(fnm env --use-on-cd --shell zsh)"
 

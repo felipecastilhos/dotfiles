@@ -9,10 +9,10 @@ Personal configuration files for development environment setup.
 Install GNU Stow:
 
 ```bash
-# Arch/Manjaro
+# Arch
 sudo pacman -S stow
 
-# Ubuntu/Debian
+# Ubuntu
 sudo apt install stow
 
 # macOS
@@ -59,6 +59,13 @@ Modular zsh configuration with lazy loading for better performance:
 - `core/` - Core shell settings (history, options, exports)
 - `tools/` - Lazy-loaded development tools (conda, nvm, zoxide)
 - Auto-discovery and loading of tool configurations
+
+### Neovim
+Lua-based Neovim configuration with LSP support:
+- `plugins/` - Modular plugin configurations (mason, completion, etc.)
+- `lsp.lua` - Language Server Protocol setup
+- `keymaps.lua` - Custom key mappings
+- LSP support for multiple languages including Lua
 
 ## What is this?
 
